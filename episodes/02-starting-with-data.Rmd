@@ -43,26 +43,29 @@ We will now demonstrate how to import tabular data using `read_csv()`.
 
 ## Presentation of the movieSerie dataset
 
-The data set we will import is movieSerie.csv. It is list of movies and series 
-from IMDB and the movie database. Each row holds information for a single movie 
-or serie, and the columns represent:
+The data set we will import is xmas_movies.csv. It is list of Christmas movies IMDB. Each row holds information about a single movie 
+, and the columns represent:
 
 | column_name | description |
 | ----------- | ----------- |
-|id | Added to provide a unique Id for each observation. |
 | title | The title of the movie or serie |
+| rating | Information about which age group the movie is suitable for |
+| runtime | How long the movie is |
+| imdb_rating | The score of the movie or serie in the IMDB database |
+| tmdb_rating | The score of the movie or serie in the movie database |
+| 
 | type | Wether the row represents a movie or a serie |
 | description | A short description of the movie or serie |
 | genre | What genre the movie or serie is |
 | release_year | When the movie or serie was released |
 |age_certification| What age is the movie or serie appropriate for |
-|runtime| How long the movie or serie is |
+
 |seasons| How many seasons there are in a serie |
 |imdb_id| A unique Id from the IMDB database|
 |imdb_score| The score of the movie or serie in the IMDB database|
 |imdb_votes| The number of votes in the IMDB database |
 |tmdb_popularity| The popularity of the movie or serie in the movie database |
-|tmdb_score| The score of the movie or serie in the movie database |
+
 
 
 ## Importing data
@@ -101,7 +104,7 @@ library(tidyverse)
 After this we can read in the data set.
 
 ```{r, eval = TRUE,  message = FALSE, purl = FALSE, echo = TRUE}
-movieSerie <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
+xmas_movies <- read_csv("data/xmas_movies.csv", na = c("NA", "NULL"))
 ```
 
 :::: callout
