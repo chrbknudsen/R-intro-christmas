@@ -331,7 +331,7 @@ genre:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-    group_by(genre) %>%
+    group_by(genre_1) %>%
     summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE))
 ```
 
@@ -342,7 +342,7 @@ You can also group by multiple columns:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-    group_by(genre, type) %>%
+    group_by(genre_1, rating) %>%
     summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE))
 ```
 
@@ -351,7 +351,7 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-    group_by(genre, type) %>%
+    group_by(genre_1, rating) %>%
     summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE)) %>%
     ungroup()
 ```
@@ -364,7 +364,7 @@ column indicating the maximum imdb_rating given to a movie or serie:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-    group_by(genre, type) %>%
+    group_by(genre_1, rating) %>%
     summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE),
               max_imdb_rating = max(imdb_rating, na.rm = TRUE))
 ```
@@ -376,7 +376,7 @@ imdb_rating first:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-    group_by(genre, type) %>%
+    group_by(genre_1, rating) %>%
     summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE),
               max_imdb_rating = max(imdb_rating, na.rm = TRUE)) %>%
     arrange(max_imdb_rating)
@@ -387,7 +387,7 @@ sort the results by decreasing order of minimum imdb_rating:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-    group_by(genre, type) %>%
+    group_by(genre_1, rating) %>%
     summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE),
               max_imdb_rating = max(imdb_rating, na.rm = TRUE)) %>%
     arrange(desc(max_imdb_rating))
@@ -440,7 +440,7 @@ imdb_rating. Also add the number of observations (hint: see `?n`).
 
 ```{r}
 xmas_movies %>%
-  group_by(genre) %>%
+  group_by(genre_1) %>%
    summarize(
        mean_tmdb_rating = mean(tmdb_rating, na.rm = TRUE),
        min_tmdb_rating = min(tmdb_rating, na.rm = TRUE),
