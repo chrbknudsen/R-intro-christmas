@@ -280,8 +280,8 @@ We might be interested in knowing the differences in scores on imdb vs tmdb:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-  mutate(score_difference = imdb_rating - tmdb_score) %>% 
-  select(imdb_rating, tmdb_score, score_difference)
+  mutate(score_difference = imdb_rating - tmdb_rating) %>% 
+  select(imdb_rating, tmdb_rating, score_difference)
 ```
 
 
@@ -292,7 +292,7 @@ xmas_movies %>%
 Create a new dataframe from the `movieSerie` data set that meets the following
 criteria: contains only the `title` column and a new column called
 `total_score` containing a value that is equal to the total number of scores on 
-both imdb and tmdb (`imdb_rating` plus `tmdb_score`).
+both imdb and tmdb (`imdb_rating` plus `tmdb_rating`).
 Only the rows where `total_score` is greater than 15 should be shown in the
 final dataframe.
 
@@ -305,7 +305,7 @@ frame!
 
 ``` {r}
 xmas_movies_total_score <- xmas_movies %>%
-  mutate(total_score = imdb_rating + tmdb_score) %>%
+  mutate(total_score = imdb_rating + tmdb_rating) %>%
   filter(total_score > 15) %>%
   select(title, total_score)
 ```
@@ -421,7 +421,7 @@ xmas_movies %>%
 1. How many moview and series are there for each rating?
 
 2. Use `group_by()` and `summarize()` to find the mean, min, and max for 
-tmdb_score. Also add the number of observations (hint: see `?n`).
+imdb_rating. Also add the number of observations (hint: see `?n`).
 
 :::::::::::::::::::::::: solution
 
@@ -442,9 +442,9 @@ tmdb_score. Also add the number of observations (hint: see `?n`).
 xmas_movies %>%
   group_by(genre) %>%
    summarize(
-       mean_tmdb_score = mean(tmdb_score, na.rm = TRUE),
-       min_tmdb_score = min(tmdb_score, na.rm = TRUE),
-       max_tmdb_score = max(tmdb_score, na.rm = TRUE),
+       mean_tmdb_rating = mean(tmdb_rating, na.rm = TRUE),
+       min_tmdb_rating = min(tmdb_rating, na.rm = TRUE),
+       max_tmdb_rating = max(tmdb_rating, na.rm = TRUE),
        n = n()
    )
 ```
