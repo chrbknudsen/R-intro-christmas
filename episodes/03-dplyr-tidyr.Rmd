@@ -183,8 +183,8 @@ With intermediate steps, you create a temporary dataframe and use
 that as input to the next function, like this:
 
 ```{r, purl = FALSE}
-xmas_movies2 <- filter(movieSerie, rating == "PG-13")
-xmas_movies_ch <- select(movieSerie2, title:description)
+xmas_movies2 <- filter(xmas_movies, rating == "PG-13")
+xmas_movies_ch <- select(xmas_movies2, title:description)
 ```
 
 This is readable, but can clutter up your workspace with lots of objects that
@@ -194,7 +194,7 @@ track of.
 You can also nest functions (i.e. one function inside of another), like this:
 
 ```{r, purl = FALSE}
-xmas_movies_ch <- select(filter(movieSerie, rating == "PG-13"),
+xmas_movies_ch <- select(filter(xmas_movies, rating == "PG-13"),
                          title:description)
 ```
 
@@ -216,7 +216,7 @@ xmas_movies %>%
     select(title,description)
 ```
 
-In the above code, we use the pipe to send the `movieSerie` dataset first
+In the above code, we use the pipe to send the `xmas_movies` dataset first
 through `filter()` to keep rows where `rating` is "PG-13", then through
 `select()` to keep only the `title` and `description` columns. Since `%>%`
 takes the object on its left and passes it as the first argument to the function
@@ -224,7 +224,7 @@ on its right, we don't need to explicitly include the dataframe as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we take the dataframe `movieSerie`, *then* we `filter`
+in the above example, we take the dataframe `xmas_movies`, *then* we `filter`
 for rows with `rating == "PG-13"`, *then* we `select` columns `title` and
 `description`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
@@ -234,7 +234,7 @@ If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
 
 ```{r, purl = FALSE}
-xmas_movies_ch <- movieSerie %>%
+xmas_movies_ch <- xmas_movies %>%
     filter(rating == "PG-13") %>%
     select(title,description)
 
@@ -251,7 +251,7 @@ expression.
 
 ## Exercise
 
-Using pipes, subset the `movieSerie` data set to include movieSerie
+Using pipes, subset the `xmas_movies` data set to include movies that
 have a `release_year` greater than 1980 and retain only the columns `title`,
  `runtime`, and `rating`.
  
@@ -289,7 +289,7 @@ xmas_movies %>%
 
 ## Exercise
 
-Create a new dataframe from the `movieSerie` data set that meets the following
+Create a new dataframe from the `xmas_movies` data set that meets the following
 criteria: contains only the `title` column and a new column called
 `total_score` containing a value that is equal to the total number of scores on 
 both imdb and tmdb (`imdb_rating` plus `tmdb_rating`).
