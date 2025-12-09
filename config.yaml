@@ -11,23 +11,23 @@
 carpentry: 'lc'
 
 # Overall title for pages.
-title: 'Introduction to R'
+title: 'Introduction to R  🎄 The Xmas edition 🎄'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created:
+created: 2025-12-24
 
 # Comma-separated list of keywords for the lesson
 keywords: 'software, data, lesson, The Carpentries, KUB Datalab'
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
-life_cycle: 'beta'
+life_cycle: 'stable'
 
 # License of the lesson materials (recommended CC-BY 4.0)
-license: 'CC-BY 4.0'
+license: 'CC-BY-SA 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/KUBDatalab/R-intro'
+source: 'https://github.com/KUBDatalab/R-intro-christmas'
 
 # Default branch of your lesson
 branch: 'main'
