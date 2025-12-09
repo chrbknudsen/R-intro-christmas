@@ -29,7 +29,7 @@ In case you have made changes to the original object we made. We read in the dat
 in a new object
 
 ```{r load-data, purl=FALSE, eval=T, echo=T, results="hide"}
-movieSerie_plotting <- read_csv("data/movieSerie.csv", na = c("NA", "NULL"))
+xmas_movies_plotting <- read_csv("data/xmas_movies.csv", na = c("NA", "NULL"))
 ```
 
 
@@ -40,8 +40,7 @@ plotting individual observations in a two-dimensional graph, with the position
 in the x,y-plane defined by the values of the two variables.
 
 The default plot function in Base R takes two vectors, one containing the values 
-of the x-axis and one containing the values for the y-axis. Here we use the 
-$-notation:
+of the x-axis and one containing the values for the y-axis. Here we use the $-notation:
 
 ```{r first-scatterplot}
 plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score)
