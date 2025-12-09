@@ -43,7 +43,7 @@ The default plot function in Base R takes two vectors, one containing the values
 of the x-axis and one containing the values for the y-axis. Here we use the $-notation:
 
 ```{r first-scatterplot}
-plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score)
+plot(xmas_movies_plotting$release_year, xmas_movies_plotting$imdb_rating)
 ```
 
 Scatterplots are useful for showing that sort for relationships in the data.
@@ -51,17 +51,17 @@ Here it does not appear that the correlation exists; there is no clear trend.
 
 We might want to adjust the labels on the axes, and add a main title:
 ```{r}
-plot(movieSerie_plotting$release_year, movieSerie_plotting$imdb_score, 
-     main = "Relation between release date and their imdb_score",
+plot(xmas_movies_plotting$release_year, xmas_movies_plotting$imdb_rating, 
+     main = "Relation between release date and their imdb_rating",
      xlab = "Release year",
-     ylab = "imdb score")
+     ylab = "imdb rating")
 ```
 
 
 ## Boxplots 
 We can use boxplots to visualize the distribution of number of imdb_score for genre:
 ```{r}
-boxplot(movieSerie_plotting$imdb_score~movieSerie_plotting$genre)
+boxplot(xmas_movies_plotting$imdb_rating~xmas_movies_plotting$genre_1)
 ```
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
@@ -86,7 +86,7 @@ outliers are either very interesting, or something that we can ignore.
 
 Another useful plottype are histograms. 
 ```{r}
-hist(movieSerie_plotting$runtime)
+hist(xmas_movies_plotting$runtime)
 ```
 
 Histograms counts the number of observations in our data, that lies between 
