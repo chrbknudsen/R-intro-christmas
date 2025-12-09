@@ -587,7 +587,7 @@ informations in another vectore. For instance if we want the imdb scores for the
 movies "FTA" and "Dostana" we can do it like this.
 
 ```{r, results='show', purl=FALSE}
-imdb_score[title %in% c("Die Hard", "Home Alone")]
+imdb_rating[title %in% c("Die Hard", "Home Alone")]
 ```
 
 
@@ -628,10 +628,12 @@ imdb_rating_na[!is.na(imdb_rating_na)]
 ## Count the number of missing values.
 sum(is.na(imdb_rating_na))
 
-## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
+# Returns the object with incomplete cases removed. The returned 
+# object is an atomic vector of type `"numeric"` (or `"double"`).
 na.omit(imdb_rating_na)
 
-## Extract those elements which are complete cases. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
+# Extract those elements which are complete cases. The 
+# returned object is an atomic vector of type `"numeric"` (or `"double"`).
 imdb_rating_na[complete.cases(imdb_rating_na)]
 ```
 Recall that you can use the `typeof()` function to find the type of your atomic vector.
