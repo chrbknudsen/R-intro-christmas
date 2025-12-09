@@ -149,7 +149,7 @@ commas:
 # output dataframe satisfies ALL specified conditions
 filter(xmas_movies, rating == "PG-13",
                    runtime > 100,
-                   imdb_score < 6.0)
+                   imdb_rating < 6.0)
 ```
 
 We can also form "and" statements with the `&` operator instead of commas:
@@ -159,7 +159,7 @@ We can also form "and" statements with the `&` operator instead of commas:
 # output dataframe satisfies ALL specified conditions
 filter(xmas_movies, rating == "PG-13" & 
                    runtime > 100 & 
-                   imdb_score < 6.0)
+                   imdb_rating < 6.0)
 ```
 
 In an "or" statement, observations must meet *at least one* of the specified conditions. 
@@ -170,7 +170,7 @@ To form "or" statements we use the logical operator for "or," which is the verti
 # output dataframe satisfies AT LEAST ONE of the specified conditions
 filter(xmas_movies, rating == "PG-13" | 
                    runtime > 100 | 
-                   imdb_score < 6.0)
+                   imdb_rating < 6.0)
 ```
 
 
@@ -280,8 +280,8 @@ We might be interested in knowing the differences in scores on imdb vs tmdb:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
-  mutate(score_difference = imdb_score - tmdb_score) %>% 
-  select(imdb_score, tmdb_score, score_difference)
+  mutate(score_difference = imdb_rating - tmdb_score) %>% 
+  select(imdb_rating, tmdb_score, score_difference)
 ```
 
 
@@ -292,7 +292,7 @@ xmas_movies %>%
 Create a new dataframe from the `movieSerie` data set that meets the following
 criteria: contains only the `title` column and a new column called
 `total_score` containing a value that is equal to the total number of scores on 
-both imdb and tmdb (`imdb_score` plus `tmdb_score`).
+both imdb and tmdb (`imdb_rating` plus `tmdb_score`).
 Only the rows where `total_score` is greater than 15 should be shown in the
 final dataframe.
 
@@ -305,7 +305,7 @@ frame!
 
 ``` {r}
 xmas_movies_total_score <- xmas_movies %>%
-  mutate(total_score = imdb_score + tmdb_score) %>%
+  mutate(total_score = imdb_rating + tmdb_score) %>%
   filter(total_score > 15) %>%
   select(title, total_score)
 ```
@@ -326,13 +326,13 @@ the `group_by()` function.
 `group_by()` is often used together with `summarize()`, which collapses each
 group into a single-row summary of that group. `group_by()` takes as arguments
 the column names that contain the **categorical** variables for which you want
-to calculate the summary statistics. So to compute the average imdb_score by
+to calculate the summary statistics. So to compute the average imdb_rating by
 genre:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
     group_by(genre) %>%
-    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
+    summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE))
 ```
 
 You may also have noticed that the output from these calls doesn't run off the
@@ -343,7 +343,7 @@ You can also group by multiple columns:
 ```{r, purl = FALSE}
 xmas_movies %>%
     group_by(genre, type) %>%
-    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE))
+    summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE))
 ```
 
 Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
@@ -352,7 +352,7 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 ```{r, purl = FALSE}
 xmas_movies %>%
     group_by(genre, type) %>%
-    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE)) %>%
+    summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE)) %>%
     ungroup()
 ```
 
@@ -360,37 +360,37 @@ xmas_movies %>%
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
-column indicating the maximum imdb_score given to a movie or serie:
+column indicating the maximum imdb_rating given to a movie or serie:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
     group_by(genre, type) %>%
-    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
-              max_imdb_score = max(imdb_score, na.rm = TRUE))
+    summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE),
+              max_imdb_rating = max(imdb_rating, na.rm = TRUE))
 ```
 
 It is sometimes useful to rearrange the result of a query to inspect the values.
-For instance, we can sort on `min_imdb_score` to put the group with the smallest
-imdb_score first:
+For instance, we can sort on `min_imdb_rating` to put the group with the smallest
+imdb_rating first:
 
 
 ```{r, purl = FALSE}
 xmas_movies %>%
     group_by(genre, type) %>%
-    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
-              max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
-    arrange(max_imdb_score)
+    summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE),
+              max_imdb_rating = max(imdb_rating, na.rm = TRUE)) %>%
+    arrange(max_imdb_rating)
 ```
 
 To sort in descending order, we need to add the `desc()` function. If we want to
-sort the results by decreasing order of minimum imdb_score:
+sort the results by decreasing order of minimum imdb_rating:
 
 ```{r, purl = FALSE}
 xmas_movies %>%
     group_by(genre, type) %>%
-    summarize(mean_imdb_score = mean(imdb_score, na.rm = TRUE),
-              max_imdb_score = max(imdb_score, na.rm = TRUE)) %>%
-    arrange(desc(max_imdb_score))
+    summarize(mean_imdb_rating = mean(imdb_rating, na.rm = TRUE),
+              max_imdb_rating = max(imdb_rating, na.rm = TRUE)) %>%
+    arrange(desc(max_imdb_rating))
 ```
 
 #### Counting
