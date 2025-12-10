@@ -141,7 +141,7 @@ Now that R has `coal_in_pounds` in memory, we can do arithmetic with it. For ins
 We can also change an object’s value by assigning it a new one:
 
 ```{r toPounds, purl=FALSE}
-coal_in_pounds <- 2.00
+coal_in_pounds <- 2.0
 0.45 * coal_in_pounds
 ```
 
