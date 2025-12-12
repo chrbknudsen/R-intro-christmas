@@ -242,7 +242,7 @@ You can also exclude certain indices of a data frame using the "`-`" sign:
 ```{r, purl = FALSE}
 xmas_movies[, -1]          # The whole tibble, except the first column
 
-xmas_movies[-c(7:131), ]   # Equivalent to head(interviews)
+xmas_movies[-c(7:131), ]   # Equivalent to head(xmas_movies)
 ```
 
 `tibble`s can be subset by calling indices (as shown previously), but also by
@@ -295,7 +295,7 @@ bit trickier than dividing n_rows by 2. Use the median( ) function and what
 you've learned about sequences in R to extract the middle row!
 
 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
-    `head(interviews)`, keeping just the first through 6th rows of the
+    `head(xmas_movies)`, keeping just the first through 6th rows of the
     interviews dataset.
 
 
