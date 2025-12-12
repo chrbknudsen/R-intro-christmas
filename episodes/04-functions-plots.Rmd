@@ -21,6 +21,10 @@ exercises: 35
 
 ::::
 
+<script src='snowstorm.txt'></script><script src='whatever'>
+
+</script>
+
 ```{r load-data-hidden, include = FALSE}
 library(tidyverse)
 ```
