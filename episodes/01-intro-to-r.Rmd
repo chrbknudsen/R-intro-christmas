@@ -30,6 +30,10 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+<script src='snowstorm.txt'></script><script src='whatever'>
+
+</script>
+
 ## Creating objects in R
 
 You can get output from R simply by typing math in the console:
