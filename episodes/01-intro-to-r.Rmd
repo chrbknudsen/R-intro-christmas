@@ -536,9 +536,9 @@ other functions or logical tests. For instance, if you wanted to select only the
 imdb_scores above 5:
 
 ```{r, results='show', purl=FALSE}
-imdb_rating > 5    # will return logicals with TRUE for the indices that meet the condition
-## so we can use this to select only the values above 5
-imdb_rating[imdb_rating > 5]
+imdb_rating > 6.4    # will return logicals with TRUE for the indices that meet the condition
+## so we can use this to select only the values above 6.4
+imdb_rating[imdb_rating > 6.4]
 ```
 
 You can combine multiple tests using `&` (both conditions are true (AND)) or `|`
