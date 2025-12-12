@@ -148,7 +148,7 @@ commas:
 # filters observations with "and" operator (comma)
 # output dataframe satisfies ALL specified conditions
 filter(xmas_movies, rating == "PG-13",
-                   runtime > 100,
+                   runtime > 60,
                    imdb_rating < 6.0)
 ```
 
@@ -158,7 +158,7 @@ We can also form "and" statements with the `&` operator instead of commas:
 # filters observations with "&" logical operator
 # output dataframe satisfies ALL specified conditions
 filter(xmas_movies, rating == "PG-13" & 
-                   runtime > 100 & 
+                   runtime > 60 & 
                    imdb_rating < 6.0)
 ```
 
@@ -169,7 +169,7 @@ To form "or" statements we use the logical operator for "or," which is the verti
 # filters observations with "|" logical operator
 # output dataframe satisfies AT LEAST ONE of the specified conditions
 filter(xmas_movies, rating == "PG-13" | 
-                   runtime > 100 | 
+                   runtime > 60 | 
                    imdb_rating < 6.0)
 ```
 
